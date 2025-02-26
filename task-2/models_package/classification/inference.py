@@ -1,7 +1,7 @@
 from .model import ClassificationCustomModel
 import sys
 
-# python -m models_package.classification.inference
+# python -m models_package.classification.inference data/animals_test_img/dog.jpeg
 
 def main() -> None:
   args = sys.argv[1:]

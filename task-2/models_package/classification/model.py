@@ -32,7 +32,10 @@ class ClassificationCustomModel(CustomModelInterface):
   dataset_path = kagglehub.dataset_download("alessiocorrado99/animals10")
   
   def __init__(self, model_path = CLASSIFICATION_MODEL_PATH):
-    self.model = tf.keras.models.load_model(model_path)
+    if model_path == None:
+      self.model = None
+    else:
+      self.model = tf.keras.models.load_model(model_path)
   
   def fit(self, batch_size=96, epochs=10):
     data_dir = pathlib.Path(self.dataset_path + '\\raw-img')
@@ -102,6 +105,10 @@ class ClassificationCustomModel(CustomModelInterface):
     return
     
   def predict(self, img_path, num_of_examples=3) -> list:
+    if self.model == None:
+      print('> train your model first')
+      return None
+    
     img_array = ImageHandler.prepare(img_path)
     
     predictions = self.model.predict(img_array)

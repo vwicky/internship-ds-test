@@ -26,3 +26,5 @@ and is responsible for the library fom which MNIST dataset will be downloaded. T
   one day (~8 hours)
 ### why both sklearn and tensorflow?
   I googled where to get the MNIST dataset from and found out that both of the above mentioned libs provide them. So I had a choice. But then, after I finished implementing a RF model with sklearn it struck me that NN and CNN would be written with TF. U can't have different models rely on different datasets. So there should be something that could provide a ds and that both sklearn- and tf- models could use. That's how DataProvider appeared.
+### are models saved?
+  afraid not. but I guess I focused too much on jupyter notebooks and this-and-that and forgot about that. I write it just so you know I'm conscious of some of the ... mistakes? silly mistakes but mistakes nevertheless. (I do save models in the second task though)  

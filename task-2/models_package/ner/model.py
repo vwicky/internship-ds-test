@@ -9,13 +9,18 @@ from spacy.lookups import Lookups
 import random
 
 from ..model_manager import CustomModelInterface, NER_MODEL_PATH
-from ...data.ner_train_data import train_data
+from .ner_train_data import train_data
 
 class NERCustomModel(CustomModelInterface):
   def __init__(self, model_path = NER_MODEL_PATH):
-    self.nlp = load_model(model_path)
+    if model_path == None:
+      self.nlp = None 
+    else:
+      self.nlp = load_model(model_path)
   
   def fit(self, train_data=train_data):
+    print('*' * 100)
+    print(NER_MODEL_PATH)
     self.nlp = spacy.blank('en')
     
     lookups = Lookups()
@@ -48,8 +53,12 @@ class NERCustomModel(CustomModelInterface):
             examples.append(example)
           self.nlp.update(examples, drop=0.3, losses=losses)
         print(f"Epoch {epoch + 1}, Losses: {losses}")
-    self.nlp.to_disk('../models/custom_ner_model')
+    self.nlp.to_disk(NER_MODEL_PATH)
     return
     
   def predict(self, text):
-    return self.nlp(text).ents
+    if self.nlp is None:
+      print('> train the model first')
+      return None
+    else:
+      return self.nlp(text).ents

@@ -1,7 +1,7 @@
 import sys
 from .model import NERCustomModel
 
-# python -m models_package.ner.inference
+# python -m models_package.ner.inference "this image contains a dog"
 
 def main() -> None:
   args = sys.argv[1:]

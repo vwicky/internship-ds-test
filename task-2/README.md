@@ -6,9 +6,31 @@
 Now you can work with the Pipeline.
 
 ## usage
+
+### setting-up models
+#### classification model
+train the model:
+  python -m models_package.classification.train {true | Any}
+the trained model'll be saved and ready to use in the pipeline
+
+(optional) make some predictions:
+  python -m models_package.classification.inference {image path}
+the output will be the list of animals possibly depicted on that image. 
+#### ner model
+train the model:
+  python -m models_package.ner.train
+(optional) make some predictions:
+  python -m models_package.ner.inference {text}
+the text might look smth like "I see a dog on this picture"
+
+Now you have the models are up and running.
+
+### using pipeline
+
 Run "python -u main.py {image path} {input text}" for the pipe to produce a boolean answer.
 **example**:
   python -u main.py data/animals_test_img/dog.jpeg "This might be a dog"
+The pipeline uses those saved models we trained earlier.
 
 ## note
 ### time spent
