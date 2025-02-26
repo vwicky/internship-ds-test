@@ -10,11 +10,11 @@ Now you can work with the Pipeline.
 ### setting-up models
 #### classification model
 train the model:
-  python -m models_package.classification.train {true | Any}
+  python -m models_package.ner.train
 the trained model'll be saved and ready to use in the pipeline
 
 (optional) make some predictions:
-  python -m models_package.classification.inference {image path}
+  python -m models_package.ner.inference {image path}
 the output will be the list of animals possibly depicted on that image. 
 #### ner model
 train the model:
